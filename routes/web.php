@@ -20,3 +20,5 @@ $router->get('/', function () use ($router) {
 $router->post('/registration-action', 'RegistrationController@registrationAction');
 $router->post('/login', 'LoginController@onLogin');
 $router->post('/phone-book/create', ['middleware'=>'auth', 'uses'=>'PhoneBookController@create']);
+$router->post('/phone-book/select', ['middleware'=>'auth', 'uses'=>'PhoneBookController@onSelect']);
+$router->post('/phone-book/delete', ['middleware'=>'auth', 'uses'=>'PhoneBookController@onDelete']);

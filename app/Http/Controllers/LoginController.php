@@ -13,12 +13,13 @@ class LoginController extends Controller
         $username  = $request->username;
         $password  = $request->password;
 
-        $result = UserRegistration::where(['username' => $username, 'password' => $password])->count();
-        if ($result == 1) {
+        $user = UserRegistration::where(['username' => $username, 'password' => $password])->first();
+        if (!empty($user)) {
             $key = env('TOKEN_KEY');
             $payload = array(
                 "authority" => "http://author.org",
-                "username" => $username,
+                "user_id" => $user->id,
+                "username" => $user->username,
                 "iat" => time(),
                 "exp" => time()+3600
             );
