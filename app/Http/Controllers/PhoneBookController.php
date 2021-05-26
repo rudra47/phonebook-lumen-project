@@ -71,7 +71,7 @@ class PhoneBookController extends Controller
         
         $result = PhoneBookDetails::where('id', $request->phone_book_details_id)
             ->where("created_by", $decodeArray['user_id'])
-            ->delete();
+            ->delete(); 
 
         if ($result) {
             return response("Delete Successfully", 202);
